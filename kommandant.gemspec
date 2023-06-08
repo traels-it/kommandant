@@ -18,4 +18,5 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 7.0.5"
+  spec.add_dependency "meilisearch-rails", "~> 0.8.1"
 end
