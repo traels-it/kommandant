@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.version     = Kommandant::VERSION
   spec.authors     = ["Nicolai Bach Woller"]
   spec.email       = ["woller@traels.it"]
-  spec.homepage    = "traels.it"
+  spec.homepage    = "https://traels.it"
   spec.summary     = "A command palette for Rails"
   spec.description = "A command palette built with Hotwire and Meilisearch"
   spec.license     = "MIT"
