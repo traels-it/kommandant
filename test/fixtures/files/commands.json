@@ -6,75 +6,24 @@
     "http_method": "post",
     "admin_only": true,
     "translations": {
-      "da": {
-        "name": "Afslut imitation"
-      }
-    }
-  },
-  {
-    "id": "imitate_user",
-    "icon": "user_ninja",
-    "path": "/command_palette/commands/imitate_user",
-    "http_method": "get",
-    "resource_class": "Partners::Employee",
-    "redirect_path": "/become/:id",
-    "text_keys": [
-      "name"
-    ],
-    "admin_only": true,
-    "translations": {
-      "da": {
-        "name": "Imiter bruger",
-        "placeholder": "Søg på partners eller brugers navn"
-      }
-    }
-  },
-  {
-    "id": "find_policy",
-    "icon": "file_invoice_dollar",
-    "path": "/command_palette/commands/find_policy",
-    "http_method": "get",
-    "resource_class": "Policy",
-    "text_keys": [
-      "insurable"
-    ],
-    "translations": {
-      "da": {
-        "name": "Find police",
-        "placeholder": "Søg på kundenavn, nummerplade eller id"
+      "en": {
+        "name": "End imitation"
       }
     }
   },
   {
     "id": "find_partner",
     "icon": "handshake",
-    "path": "/command_palette/commands/find_partner",
+    "path": "/kommandant/commands/find_partner",
     "http_method": "get",
     "resource_class": "Partner",
     "text_keys": [
       "name"
     ],
     "translations": {
-      "da": {
+      "en": {
         "name": "Find partner",
-        "placeholder": "Søg på partnernavn, -cvr eller id"
-      }
-    }
-  },
-  {
-    "id": "find_deal",
-    "icon": "file_contract",
-    "path": "/command_palette/commands/find_deal",
-    "http_method": "get",
-    "resource_class": "Deal",
-    "text_keys": [
-      "id"
-    ],
-    "translations": {
-      "da": {
-        "name": "Find tilbud",
-        "placeholder": "Søg på kundenavn, nummerplade eller id",
-        "result_text": "Tilbud %{id}"
+        "placeholder": "Search for partner name"
       }
     }
   }

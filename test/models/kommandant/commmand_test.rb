@@ -15,7 +15,7 @@ module Kommandant
     end
 
     test ".search searches the commands in meilisearch by their translated name" do
-      results = Kommandant::Command.search("Afslut")
+      results = Kommandant::Command.search("End")
 
       assert_equal "end_imitation", results.first.id
     end
@@ -26,27 +26,23 @@ module Kommandant
       assert_equal "end_imitation", result.id
     end
 
-    # describe "#name" do
-    #   it "has a translated name" do
-    #     command = find_command_for(id: "end_imitation")
+    test "it has a translatable name" do
+      command = find_command_for(id: "end_imitation")
 
-    #     assert_equal "Afslut imitation", command.name
-    #   end
-    # end
+      assert_equal "End imitation", command.name
+    end
 
-    # describe "#placeholder" do
-    #   it "has a translated placeholder" do
-    #     command = find_command_for(id: "find_partner")
+    test "it has a translated placeholder" do
+      command = find_command_for(id: "find_partner")
 
-    #     assert_equal "Søg på partnernavn, -cvr eller id", command.placeholder
-    #   end
+      assert_equal "Search for partner name", command.placeholder
+    end
 
-    #   it "returns nil, when command requires no placeholder" do
-    #     command = find_command_for(id: "end_imitation")
+    test "placeholder is nil, when command has none" do
+      command = find_command_for(id: "end_imitation")
 
-    #     assert_nil command.placeholder
-    #   end
-    # end
+      assert_nil command.placeholder
+    end
 
     def find_command_for(id:)
       data = @parsed_commands_file.find { |hash| hash["id"] == id }.symbolize_keys

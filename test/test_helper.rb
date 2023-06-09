@@ -21,3 +21,5 @@ MeiliSearch::Rails.configuration = {
   meilisearch_api_key: ENV.fetch("MEILI_MASTER_KEY") { "MASTER_KEY" },
   per_environment: true
 }
+
+Kommandant::Command.reindex!
