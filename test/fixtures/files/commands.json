@@ -1,5 +1,23 @@
 [
   {
+    "id": "imitate_user",
+    "icon": "user_ninja",
+    "path": "/kommandant/commands/imitate_user",
+    "http_method": "get",
+    "resource_class": "User",
+    "redirect_path": "/become/:id",
+    "text_keys": [
+      "name"
+    ],
+    "admin_only": true,
+    "translations": {
+      "da": {
+        "name": "Imiter bruger",
+        "placeholder": "Søg på partners eller brugers navn"
+      }
+    }
+  },
+  {
     "id": "end_imitation",
     "icon": "ban",
     "path": "/logout",
@@ -8,6 +26,23 @@
     "translations": {
       "en": {
         "name": "End imitation"
+      }
+    }
+  },
+  {
+    "id": "find_user",
+    "icon": "user",
+    "path": "/kommandant/commands/find_user",
+    "http_method": "get",
+    "resource_class": "User",
+    "text_keys": [
+      "name"
+    ],
+    "translations": {
+      "en": {
+        "name": "Find user",
+        "placeholder": "Search for user name",
+        "result_text": "Show %{name}"
       }
     }
   },
