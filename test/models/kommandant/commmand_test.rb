@@ -33,9 +33,9 @@ module Kommandant
     end
 
     test "it has a translated placeholder" do
-      command = find_command_for(id: "find_partner")
+      command = find_command_for(id: "find_user")
 
-      assert_equal "Search for partner name", command.placeholder
+      assert_equal "Search for user name", command.placeholder
     end
 
     test "placeholder is nil, when command has none" do

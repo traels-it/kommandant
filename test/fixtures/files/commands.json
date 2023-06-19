@@ -45,21 +45,5 @@
         "result_text": "Show %{name}"
       }
     }
-  },
-  {
-    "id": "find_partner",
-    "icon": "handshake",
-    "path": "/kommandant/commands/find_partner",
-    "http_method": "get",
-    "resource_class": "Partner",
-    "text_keys": [
-      "name"
-    ],
-    "translations": {
-      "en": {
-        "name": "Find partner",
-        "placeholder": "Search for partner name"
-      }
-    }
   }
 ]
