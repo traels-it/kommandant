@@ -2,7 +2,6 @@ module Kommandant
   class Command
     class << self
       def reindex!
-        # TODO: Denne path skal kunne konfigureres. Brug evt. dry-configurable.
         index.add_documents(
           JSON.parse(File.read(Kommandant.config.commands_path))
         )
