@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  search:
+    image: getmeili/meilisearch:latest
+    ports:
+      - "7700:7700"
+    environment:
+      MEILI_MASTER_KEY: MASTER_KEY
