@@ -49,7 +49,7 @@ module Kommandant
       end
     end
 
-    attr_reader :id, :icon, :path, :http_method, :resource_class, :redirect_path, :text_keys, :translator
+    attr_reader :id, :path, :http_method, :resource_class, :redirect_path, :text_keys, :translator
 
     def name
       translator.translate(I18n.locale, "name")
@@ -63,6 +63,14 @@ module Kommandant
 
     def admin_only?
       admin_only
+    end
+
+    def icon?
+      icon.present?
+    end
+
+    def icon
+      @icon.to_s.dasherize
     end
 
     private

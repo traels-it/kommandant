@@ -1,0 +1,9 @@
+da:
+  kommandant:
+    shared:
+      command_palette:
+        input_placeholder: Søg
+        default_state:
+          recent_commands: Sidst brugte
+        empty_state:
+          text: Vi kunne ikke finde nogen resultater for

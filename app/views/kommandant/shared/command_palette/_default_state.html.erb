@@ -1,0 +1,14 @@
+<% if local_assigns[:recent_commands] %>
+  <ul class="max-h-80 scroll-py-2 divide-y divide-gray-100 overflow-y-auto">
+    <% if recent_commands.any? %>
+      <li class="p-2">
+        <h2 class="mt-4 mb-2 px-3 text-xs font-semibold text-gray-500"><%= t(".recent_commands") %></h2>
+        <ul class="text-sm text-gray-700">
+          <% recent_commands.each do |command| %>
+            <%= render "kommandant/shared/command_palette/command", command: command %>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
