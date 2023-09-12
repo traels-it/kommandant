@@ -32,6 +32,14 @@ module Kommandant
       assert_equal "End imitation", command.name
     end
 
+    test "it shows an error message when the name is not translated" do
+      I18n.with_locale(:da) do
+        command = find_command_for(id: "end_imitation")
+
+        assert_equal "no translation for da.name in Meilisearch", command.name
+      end
+    end
+
     test "it has a translated placeholder" do
       command = find_command_for(id: "find_user")
 

@@ -52,6 +52,8 @@ module Kommandant
     attr_reader :id, :path, :http_method, :resource_class, :redirect_path, :text_keys, :translator
 
     def name
+      return "no translation for #{I18n.locale}.name in Meilisearch" unless translator.exists?(I18n.locale, "name")
+
       translator.translate(I18n.locale, "name")
     end
 
