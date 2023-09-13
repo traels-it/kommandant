@@ -1,5 +1,5 @@
 module Kommandant
-  class SearchesController < ApplicationController
+  class SearchesController < ::ApplicationController
     def index
       @results = Kommandant::Command.search(params[:query])
 
