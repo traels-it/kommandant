@@ -9,3 +9,5 @@ da:
           text: Vi kunne ikke finde nogen resultater for
         loading_message:
           text: Henter...
+    navigation:
+      jump_to: Gå til

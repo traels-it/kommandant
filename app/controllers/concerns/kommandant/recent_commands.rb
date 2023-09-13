@@ -6,7 +6,6 @@ module Kommandant::RecentCommands
   end
 
   def set_recent_commands
-    # TODO: Make current_user configurable
     return unless current_user.present?
 
     @recent_commands ||= current_user.recent_commands.elements.map do |command_id|
