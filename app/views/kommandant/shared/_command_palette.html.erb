@@ -36,7 +36,7 @@
               <!-- Results, show/hide based on command palette state. -->
               <ul class="max-h-96 overflow-y-auto p-2 text-sm text-gray-700">
                 <% local_assigns[:results].each do |result| %>
-                  <%= result %>
+                  <%= render "kommandant/shared/command_palette/command", command: result %>
                 <% end %>
               </ul>
             <% end %>

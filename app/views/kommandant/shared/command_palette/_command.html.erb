@@ -1,9 +1,8 @@
-
 <li>
   <%= link_to command.path, class: "group cursor-default select-none flex items-center px-3 py-2 rounded-md data-[active=true]:bg-slate-600 data-[active=true]:text-white group-data-[active=true]:outline-none", data: {active: false, keyboard_navigation_target: "focusable", action: "mouseenter->keyboard-navigation#focus click->command-palette#showLoadingMessage", turbo_method: command.http_method} do %>
     <% if command.icon? %>
       <div class="flex-none text-gray-400 group-data-[active=true]:text-white">
-        <!-- This is strictly dependent on FontAwesome -->
+        <!-- TODO: This is strictly dependent on FontAwesome. Find some way to make icons configurable. Maybe by using a defined interface? -->
         <%= content_tag(:i, nil, class: "fas fa-#{command.icon} fa-fw fa-lg") %>
       </div>
     <% end %>
