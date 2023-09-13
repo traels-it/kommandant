@@ -1,0 +1,54 @@
+<%= turbo_frame_tag :command_palette do %>
+  <div data-command-palette-target="content">
+    <div class="flex px-4">
+      <div class="flex items-center space-x-1 text-gray-400">
+        <%= link_to(Kommandant::Engine.routes.url_helpers.searches_path, class: "inline-flex items-center space-x-2 border shadow-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:cursor-pointer focus:ring-gray-500 text-xs px-2.5 py-1.5") do %>
+          <span><%= @command.name %></span>
+        <% end %>
+
+        <!-- This is strictly dependent on FontAwesome -->
+        <%= content_tag(:i, nil, class: "fas fa-chevron-right fa-fw fa-lg text-gray-400") %>
+      </div>
+
+      <%= form_with url: Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id), method: :get, class: "flex-grow" do |form| %>
+        <%= form.text_field :query, class: "h-12 w-full border-0 bg-transparent pl-1 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm", value: params[:query], placeholder: @command.placeholder, autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>
+      <% end %>
+    </div>
+
+    <% if @results.any? %>
+      <ul class="overflow-y-auto p-2 text-sm text-gray-700">
+        <% @results.each do |result| %>
+          <%= render result.resource, result: result %>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= render "kommandant/shared/command_palette/empty_state", query: params[:query] %>
+    <% end %>
+  </div>
+
+  <%#= render CommandPalettes::LoadingMessageComponent.new %>
+
+  <% if @pagy.pages > 1 %>
+    <div class="flex justify-end items-center divide-x bg-gray-50 py-2.5 px-4 text-xs text-gray-700">
+      <div class="pr-2 flex flex-wrap justify-end items-center space-x-2">
+        <span><%= t("navigation.previous").html_safe %>:</span>
+        
+        <div class="flex items-center space-x-1">
+          <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">Ctrl</kbd>
+          <span>+</span>
+          <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">J</kbd>
+        </div>
+      </div>
+
+      <div class="pl-2 flex flex-wrap justify-end items-center space-x-2">
+        <span><%= t("navigation.next").html_safe %>:</span>
+        
+        <div class="flex items-center space-x-1">
+          <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">Ctrl</kbd>
+          <span>+</span>
+          <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">L</kbd>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

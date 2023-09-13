@@ -10,7 +10,7 @@
         <%= content_tag(:i, nil, class: "fas fa-chevron-right fa-fw fa-lg text-gray-400") %>
       </div>
 
-      <%= form_with url: "Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id)", method: :get, class: "flex-grow" do |form| %>
+      <%= form_with url: Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id), method: :get, class: "flex-grow" do |form| %>
         <%= form.text_field :query, class: "h-12 w-full border-0 bg-transparent pl-1 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm", value: @query, placeholder: @command.placeholder, autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>
       <% end %>
     </div>

@@ -33,11 +33,6 @@ module Kommandant
       :get
     end
 
-    # Should this be deleted?
-    def component_class
-      "Kommandant::Searches::Results::#{resource.class}Component".safe_constantize || Kommandant::ResultComponent
-    end
-
     private
 
     attr_reader :command, :translator
