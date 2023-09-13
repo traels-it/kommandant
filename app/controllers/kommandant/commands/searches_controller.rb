@@ -1,6 +1,4 @@
 class Kommandant::Commands::SearchesController < ApplicationController
-  ITEMS_PER_PAGE = 10
-
   before_action :set_command
 
   def show
@@ -8,7 +6,9 @@ class Kommandant::Commands::SearchesController < ApplicationController
       Kommandant::Commands::SearchResult.new(command: @command, resource: resource)
     end
 
-    @pagy, @results = pagy_array(@results, items: ITEMS_PER_PAGE)
+    if Kommandant.config.pagination.enabled
+      @pagination, @results = Kommandant.config.pagination.lambda.call(@results, Kommandant.config.pagination.items_per_page, self)
+    end
   end
 
   private

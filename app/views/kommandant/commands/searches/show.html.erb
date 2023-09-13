@@ -28,7 +28,7 @@
 
   <%= render "kommandant/shared/command_palette/loading_message" %>
 
-  <% if @pagy.pages > 1 %>
+  <% if @pagination.pages > 1 %>
     <div class="flex justify-end items-center divide-x bg-gray-50 py-2.5 px-4 text-xs text-gray-700">
       <div class="pr-2 flex flex-wrap justify-end items-center space-x-2">
         <span><%= t("navigation.previous").html_safe %>:</span>
