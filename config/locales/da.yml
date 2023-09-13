@@ -7,3 +7,5 @@ da:
           recent_commands: Sidst brugte
         empty_state:
           text: Vi kunne ikke finde nogen resultater for
+        loading_message:
+          text: Henter...
