@@ -21,6 +21,17 @@
           <%= render result.resource, result: result %>
         <% end %>
       </ul>
+
+      <% if Kommandant.config.pagination.enabled %>
+        <div class="px-4 py-2 flex justify-between items-baseline">
+          <span class="text-sm"><%= @pagination_info_label %></span>
+
+          <div class="space-x-4">
+            <%= link_to(t("kommandant.pagination.prev"), Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id, page: @pagination.prev, query: @query), class: "font-medium text-sm text-gray-600 hover:text-gray-800", data: {command_palette_target: "previousPageLink"}) if @pagination.prev %>
+            <%= link_to(t("kommandant.pagination.next"), Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id, page: @pagination.next, query: @query), class: "font-medium text-sm text-gray-600 hover:text-gray-800", data: {command_palette_target: "nextPageLink"}) if @pagination.next %>
+          </div>
+        </div>
+      <% end %>
     <% else %>
       <%= render "kommandant/shared/command_palette/empty_state", query: params[:query] %>
     <% end %>
@@ -28,7 +39,7 @@
 
   <%= render "kommandant/shared/command_palette/loading_message" %>
 
-  <% if @pagination.pages > 1 %>
+  <% if Kommandant.config.pagination.enabled && @pagination.pages > 1 %>
     <div class="flex justify-end items-center divide-x bg-gray-50 py-2.5 px-4 text-xs text-gray-700">
       <div class="pr-2 flex flex-wrap justify-end items-center space-x-2">
         <span><%= t("navigation.previous").html_safe %>:</span>

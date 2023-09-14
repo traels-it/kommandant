@@ -14,7 +14,9 @@ module Kommandant
   setting :pagination do
     setting :enabled, default: true
     setting :items_per_page, default: 10
-    setting :lambda, default: ->(results, items, controller) { controller.send(:pagy_array, results, items: items) }
+    setting :pagination_lambda, default: ->(results, items, controller) { controller.send(:pagy_array, results, items: items) }
+    setting :info_label_lambda, default: ->(pagination, controller) { controller.send(:pagy_info, pagination).html_safe }
+    setting :module, default: "Pagy::Frontend"
   end
 
   autoload :Command, "kommandant/command"

@@ -1,4 +1,6 @@
 class Kommandant::Commands::SearchesController < ApplicationController
+  include Kommandant.config.pagination.module.constantize if Kommandant.config.pagination.enabled
+
   before_action :set_command
 
   def show
@@ -7,7 +9,8 @@ class Kommandant::Commands::SearchesController < ApplicationController
     end
 
     if Kommandant.config.pagination.enabled
-      @pagination, @results = Kommandant.config.pagination.lambda.call(@results, Kommandant.config.pagination.items_per_page, self)
+      @pagination, @results = Kommandant.config.pagination.pagination_lambda.call(@results, Kommandant.config.pagination.items_per_page, self)
+      @pagination_info_label = Kommandant.config.pagination.info_label_lambda.call(@pagination, self)
     end
   end
 

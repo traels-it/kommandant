@@ -11,3 +11,6 @@ da:
           text: Henter...
     navigation:
       jump_to: Gå til
+    pagination:
+      prev: Forrige
+      next: Næste
