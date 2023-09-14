@@ -1,9 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+admin:
   name: Isaiah Wiegand
   email: wiegand@example.com
+  admin: true
 
-two:
+not_admin:
   name: Romulus Kuhn
   email: kuhn@example.com

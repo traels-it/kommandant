@@ -1,6 +1,10 @@
 require "test_helper"
 
 class CommandsControllerTest < ActionDispatch::IntegrationTest
+  before do
+    sign_in(users(:not_admin))
+  end
+
   describe "#show" do
     it "shows a back button" do
       # should the link back actually be to a command_palettes#new or command_palettes#show?
@@ -19,7 +23,7 @@ class CommandsControllerTest < ActionDispatch::IntegrationTest
     end
 
     it "adds the command to the current user's recent searches (requires kredis)" do
-      user = users(:two)
+      user = users(:not_admin)
       assert_difference -> { user.recent_commands.elements.count }, 1 do
         get kommandant.command_path(:find_user)
 

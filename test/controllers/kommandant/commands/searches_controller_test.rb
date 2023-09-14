@@ -1,9 +1,13 @@
 require "test_helper"
 
 class Kommandant::Commands::SearchesControllerTest < ActionDispatch::IntegrationTest
+  before do
+    sign_in(users(:not_admin))
+  end
+
   describe "#show" do
     it "finds resources" do
-      resource = users(:two)
+      resource = users(:not_admin)
       expected_path = user_path(resource)
 
       get kommandant.command_searches_path(:find_user), params: {query: resource.id}
@@ -17,7 +21,7 @@ class Kommandant::Commands::SearchesControllerTest < ActionDispatch::Integration
 
     describe "filtering results" do
       it "finds results, user is allowed to see" do
-        resource = users(:two)
+        resource = users(:not_admin)
         expected_path = user_path(resource)
 
         get kommandant.command_searches_path(:find_user), params: {query: resource.id}
@@ -26,7 +30,7 @@ class Kommandant::Commands::SearchesControllerTest < ActionDispatch::Integration
       end
 
       it "does not find results, user is not allowed to see" do
-        filtered_resource = users(:one)
+        filtered_resource = users(:admin)
 
         get kommandant.command_searches_path(:find_user), params: {query: filtered_resource.id}
 

@@ -6,6 +6,10 @@ require "test_helper"
 # Also I should probably redesign the palette or ask for permission to use the design from TailwindUI...
 class SearchesControllerTest < ActionDispatch::IntegrationTest
   describe "#search" do
+    before do
+      sign_in users(:not_admin)
+    end
+
     it "renders search results, when there are any" do
       get kommandant.searches_path, params: {query: "find"}
 
@@ -20,14 +24,34 @@ class SearchesControllerTest < ActionDispatch::IntegrationTest
       assert_select "div.py-14", text: "#{I18n.t("kommandant.shared.command_palette.empty_state.text")} missing"
     end
 
-    it "filters admin_only results" do
-      skip
-      log_in(partners_employees(:partner_employee))
+    describe "admin only filter" do
+      it "filters admin_only results" do
+        get kommandant.searches_path, params: {query: "end"}
 
-      get kommandant.searches_path, params: {query: "end"}
+        assert_select "a span", text: "End imitation", count: 0
+        assert_select "a[href='/logout']", count: 0
+      end
 
-      assert_select "a span", text: "Afslut imitation", count: 0
-      assert_select "a[href='/logout']", count: 0
+      it "shows admin only results, when the user is an admin" do
+        sign_in users(:admin)
+
+        get kommandant.searches_path, params: {query: "end"}
+
+        assert_select "a span", text: "End imitation", count: 1
+        assert_select "
+        a[href='/logout']", count: 1
+      end
+
+      it "handles a nil admin_only_filter_lambda" do
+        old_lamba = Kommandant.config.admin_only_filter_lambda
+        Kommandant.config.admin_only_filter_lambda = nil
+
+        get kommandant.searches_path, params: {query: "end"}
+
+        assert_response :success
+
+        Kommandant.config.admin_only_filter_lambda = old_lamba
+      end
     end
   end
 end

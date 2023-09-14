@@ -30,4 +30,8 @@ class ActiveSupport::TestCase
       true
     end
   end
+
+  def sign_in(user)
+    post sessions_path, params: {user_id: user.id}
+  end
 end
