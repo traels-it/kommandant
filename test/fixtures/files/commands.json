@@ -45,5 +45,21 @@
         "result_text": "Show %{name}"
       }
     }
+  },
+  {
+    "id": "find_post",
+    "icon": "file",
+    "path": "/kommandant/commands/find_post",
+    "http_method": "get",
+    "resource_class": "Post",
+    "text_keys": [
+      "name"
+    ],
+    "translations": {
+      "en": {
+        "name": "Find post",
+        "result_text": "Show %{name}"
+      }
+    }
   }
 ]

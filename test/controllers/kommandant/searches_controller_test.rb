@@ -13,8 +13,9 @@ class SearchesControllerTest < ActionDispatch::IntegrationTest
     it "renders search results, when there are any" do
       get kommandant.searches_path, params: {query: "find"}
 
-      assert_select "ul li", count: 1 do
+      assert_select "ul li", count: 2 do
         assert_select "a[href='#{kommandant.command_path(:find_user)}']"
+        assert_select "a[href='#{kommandant.command_path(:find_post)}']"
       end
     end
 
