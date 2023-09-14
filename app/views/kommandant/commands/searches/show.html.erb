@@ -41,7 +41,7 @@
   <% if Kommandant.config.pagination.enabled && @pagination.pages > 1 %>
     <div class="flex justify-end items-center divide-x bg-gray-50 py-2.5 px-4 text-xs text-gray-700">
       <div class="pr-2 flex flex-wrap justify-end items-center space-x-2">
-        <span><%= t("navigation.previous").html_safe %>:</span>
+        <span><%= t("kommandant.pagination.prev").html_safe %>:</span>
         
         <div class="flex items-center space-x-1">
           <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">Ctrl</kbd>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="pl-2 flex flex-wrap justify-end items-center space-x-2">
-        <span><%= t("navigation.next").html_safe %>:</span>
+        <span><%= t("kommandant.pagination.next").html_safe %>:</span>
         
         <div class="flex items-center space-x-1">
           <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">Ctrl</kbd>
