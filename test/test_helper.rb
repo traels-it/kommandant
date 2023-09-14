@@ -22,4 +22,12 @@ MeiliSearch::Rails.configuration = {
   per_environment: true
 }
 
-Kommandant::Command.reindex!
+class ActiveSupport::TestCase
+  setup do
+    @@once ||= begin
+      Kommandant::Command.reindex!
+      MeiliSearch::Rails::Utilities.reindex_all_models
+      true
+    end
+  end
+end

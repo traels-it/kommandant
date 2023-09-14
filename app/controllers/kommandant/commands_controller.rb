@@ -3,7 +3,9 @@ module Kommandant
     before_action :set_command
 
     def show
-      current_user.recent_commands.prepend(@command.id)
+      if Kommandant.config.recent_commands.enabled
+        current_user.recent_commands.prepend(@command.id)
+      end
     end
 
     private

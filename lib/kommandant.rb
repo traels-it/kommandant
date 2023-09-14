@@ -11,6 +11,9 @@ module Kommandant
   setting :admin_only_filter_lambda
   setting :parent_controller, default: "::ApplicationController"
   setting :current_user_method, default: "current_user"
+  setting :recent_commands do
+    setting :enabled, default: true
+  end
   setting :pagination do
     setting :enabled, default: true
     setting :items_per_page, default: 10

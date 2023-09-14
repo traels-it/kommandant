@@ -17,7 +17,12 @@
     <% if @results.any? %>
       <ul class="overflow-y-auto p-2 text-sm text-gray-700">
         <% @results.each do |result| %>
-          <%= render result.resource, result: result %>
+          <%# TODO: How about a default? %>
+          <% if partial_exists_for_result?(result) %>
+            <%= render result.resource, result: result %>
+          <% else %>
+            <%= render "kommandant/shared/command_palette/result", result: result %>
+          <% end %>
         <% end %>
       </ul>
 

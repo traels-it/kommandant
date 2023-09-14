@@ -3,6 +3,8 @@ class Kommandant::Commands::SearchesController < ApplicationController
 
   before_action :set_command
 
+  helper_method :partial_exists_for_result?
+
   def show
     @results = filtered_resources.map do |resource|
       Kommandant::Commands::SearchResult.new(command: @command, resource: resource)
@@ -23,8 +25,16 @@ class Kommandant::Commands::SearchesController < ApplicationController
   def filtered_resources
     # Pagy would be most efficiently used on the output of the search method - but we need to check, that the user is
     # actually allowed to view the resource
-    @resources ||= @command.resource_class.constantize.search(params[:query]).filter do |resource|
+    @resources ||= @command.resource_class.constantize.search(params[:query])
+
+    return @resources if Kommandant.config.search_result_filter_lambda.nil?
+
+    @resources.filter do |resource|
       Kommandant.config.search_result_filter_lambda.call(current_ability, resource)
     end
+  end
+
+  def partial_exists_for_result?(result)
+    lookup_context.exists?("kommandant/commands/#{result.resource.to_partial_path}", [], true)
   end
 end

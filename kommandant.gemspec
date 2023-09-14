@@ -19,6 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", ">= 7.0.5"
   spec.add_dependency "meilisearch-rails", "~> 0.8.1"
+  spec.add_dependency "turbo-rails", "~> 1.4"
   spec.add_dependency "dry-configurable", "~> 1.0", ">= 1.0.1"
-  spec.add_development_dependency "standard", "~> 1.29"
 end

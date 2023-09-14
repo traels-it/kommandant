@@ -1,0 +1,6 @@
+<li>
+  <%= link_to result.path, class: "group cursor-default select-none flex items-center px-3 py-2 rounded-md data-[active=true]:bg-slate-600 data-[active=true]:text-white group-data-[active=true]:outline-none", data: {active: false, keyboard_navigation_target: "focusable", action: "mouseenter->keyboard-navigation#focus click->command-palette#showLoadingMessage", turbo_method: result.http_method} do %>
+    <span class="ml-3 flex-auto truncate"><%= result.name %></span>
+    <span class="ml-3 hidden group-data-[active=true]:inline flex-none text-indigo-100"><%= t("command_palette.navigation.jump_to") %></span>
+  <% end %>
+</li>
