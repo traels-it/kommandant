@@ -23,7 +23,7 @@
         <div data-command-palette-target="content">
           <div class="relative">
             <div class="pointer-events-none absolute top-3 left-4 text-gray-400">
-              <i class="text-gray-400 fas fa-fw fa-search"></i>
+              <%= render "kommandant/shared/icons/search" %>
             </div>
             <%= form_with url: Kommandant::Engine.routes.url_helpers.searches_path, method: :get do |form| %>
               <%= form.text_field :query, value: local_assigns[:query], class: "h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm", placeholder: t(".input_placeholder"), autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>

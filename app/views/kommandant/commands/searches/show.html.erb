@@ -6,8 +6,7 @@
           <span><%= @command.name %></span>
         <% end %>
 
-        <!-- This is strictly dependent on FontAwesome -->
-        <%= content_tag(:i, nil, class: "fas fa-chevron-right fa-fw fa-lg text-gray-400") %>
+        <%= render "kommandant/shared/icons/chevron_right" %>
       </div>
 
       <%= form_with url: Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id), method: :get, class: "flex-grow" do |form| %>

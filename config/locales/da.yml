@@ -9,6 +9,9 @@ da:
           text: Vi kunne ikke finde nogen resultater for
         loading_message:
           text: Henter...
+      icons:
+        command:
+          icon_missing: Command icon mangler med navn '%{icon_name}'
     navigation:
       jump_to: Gå til
     pagination:
