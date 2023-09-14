@@ -18,13 +18,23 @@ class CommandsControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
-    it "adds the command to the current user's recent searches" do
-      skip
-      assert_difference -> { admin.recent_commands.elements.count }, 1 do
+    it "adds the command to the current user's recent searches (requires kredis)" do
+      user = users(:two)
+      assert_difference -> { user.recent_commands.elements.count }, 1 do
         get kommandant.command_path(:find_user)
 
-        assert_equal "find_user", admin.recent_commands.elements.first
+        assert_equal "find_user", user.recent_commands.elements.first
       end
+    end
+
+    it "works even when the application is not setup with recent commands" do
+      Kommandant.config.recent_commands.enabled = false
+
+      get kommandant.command_path(:find_user)
+
+      assert_response :success
+
+      Kommandant.config.recent_commands.enabled = true
     end
   end
 end

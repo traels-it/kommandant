@@ -13,6 +13,7 @@ gem "turbo-rails", "~> 1.4"
 group :development do
 end
 group :test do
+  gem "kredis", "~> 1.5"
   gem "pagy", "~> 6.0"
   gem "minitest-spec-rails", "~> 7.2"
 end

@@ -5,4 +5,6 @@ class User < ApplicationRecord
     attribute :id
     attribute :name
   end
+
+  kredis_unique_list :recent_commands, limit: 5
 end

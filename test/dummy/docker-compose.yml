@@ -1,8 +1,19 @@
 version: "3.9"
 services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
   search:
     image: getmeili/meilisearch:latest
     ports:
       - "7700:7700"
     environment:
       MEILI_MASTER_KEY: MASTER_KEY
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
