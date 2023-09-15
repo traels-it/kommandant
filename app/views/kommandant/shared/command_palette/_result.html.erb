@@ -1,6 +1,6 @@
 <li>
-  <%= link_to result.path, class: "group cursor-default select-none flex items-center px-3 py-2 rounded-md data-[active=true]:bg-slate-600 data-[active=true]:text-white group-data-[active=true]:outline-none", data: {active: false, keyboard_navigation_target: "focusable", action: "mouseenter->keyboard-navigation#focus click->command-palette#showLoadingMessage", turbo_method: result.http_method} do %>
-    <span class="ml-3 flex-auto truncate"><%= result.name %></span>
-    <span class="ml-3 hidden group-data-[active=true]:inline flex-none text-indigo-100"><%= t("kommandant.navigation.jump_to") %></span>
+  <%= link_to result.path, class: "kommandant-group kommandant-cursor-default kommandant-select-none kommandant-flex kommandant-items-center kommandant-px-3 kommandant-py-2 kommandant-rounded-md data-[active=true]:kommandant-bg-slate-600 data-[active=true]:kommandant-text-white group-data-[active=true]:kommandant-outline-none", data: {active: false, keyboard_navigation_target: "focusable", action: "mouseenter->keyboard-navigation#focus click->command-palette#showLoadingMessage", turbo_method: result.http_method} do %>
+    <span class="kommandant-ml-3 kommandant-flex-auto kommandant-truncate"><%= result.name %></span>
+    <span class="kommandant-ml-3 kommandant-hidden group-data-[active=true]:kommandant-inline kommandant-flex-none kommandant-text-indigo-100"><%= t("kommandant.navigation.jump_to") %></span>
   <% end %>
 </li>

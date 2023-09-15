@@ -1,16 +1,17 @@
 <%= turbo_frame_tag :command_palette do %>
   <div data-command-palette-target="content">
-    <div class="flex px-4">
-      <div class="flex items-center space-x-1 text-gray-400">
-        <%= link_to(Kommandant::Engine.routes.url_helpers.searches_path, class: "inline-flex items-center space-x-2 border shadow-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:cursor-pointer focus:ring-gray-500 text-xs px-2.5 py-1.5") do %>
+    <div class="kommandant-flex kommandant-px-4">
+      <div class="kommandant-flex kommandant-items-center kommandant-space-x-1 kommandant-text-gray-400">
+        <%= link_to(Kommandant::Engine.routes.url_helpers.searches_path, class: "kommandant-inline-flex kommandant-items-center kommandant-space-x-2 kommandant-border kommandant-shadow-sm kommandant-font-medium kommandant-rounded-md focus:kommandant-outline-none focus:kommandant-ring-2 focus:kommandant-ring-offset-2 disabled:kommandant-opacity-50 disabled:kommandant-cursor-not-allowed kommandant-border-gray-300 kommandant-text-gray-700 kommandant-bg-white hover:kommandant-bg-gray-50 hover:kommandant-cursor-pointer focus:kommandan
+        tring-gray-500 kommandant-text-xs kommandant-px-2.5 kommandant-py-1.5") do %>
           <span><%= @command.name %></span>
         <% end %>
 
         <%= render "kommandant/shared/icons/chevron_right" %>
       </div>
 
-      <%= form_with url: Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id), method: :get, class: "flex-grow" do |form| %>
-        <%= form.text_field :query, class: "h-12 w-full border-0 bg-transparent pl-1 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm", value: @query, placeholder: @command.placeholder, autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>
+      <%= form_with url: Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id), method: :get, class: "kommandant-flex-grow" do |form| %>
+        <%= form.text_field :query, class: "kommandant-h-12 kommandant-w-full kommandant-border-0 kommandant-bg-transparent kommandant-pl-1 kommandant-pr-4 kommandant-text-gray-800 kommandant-placeholder-gray-400 focus:kommandant-ring-0 sm:kommandant-text-sm", value: @query, placeholder: @command.placeholder, autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>
       <% end %>
     </div>
   </div>

@@ -1,7 +1,5 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
-
 module.exports = {
+  prefix: "kommandant-",
   content: [
     './public/*.html',
     './app/helpers/kommandant/**/*.rb',
@@ -15,5 +13,8 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
-  ]
+  ],
+  corePlugins: {
+    preflight: false,
+  }
 }

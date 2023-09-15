@@ -1,12 +1,14 @@
 <li>
-  <%= link_to command.path, class: "group cursor-default select-none flex items-center px-3 py-2 rounded-md data-[active=true]:bg-slate-600 data-[active=true]:text-white group-data-[active=true]:outline-none", data: {active: false, keyboard_navigation_target: "focusable", action: "mouseenter->keyboard-navigation#focus click->command-palette#showLoadingMessage", turbo_method: command.http_method} do %>
+  <%= link_to command.path, class: "kommandant-group kommandant-cursor-default kommandant-select-none kommandant-flex kommandant-items-center kommandant-px-3 kommandant-py-2 kommandant-rounded-md data-[active=true]:kommandant-bg-slate-600 data-[active=true]:kommandant-text-white group-data-[active=true]:kommandant-outline-none", data: {active: false, keyboard_navigation_target: "focusable", action: "mouseenter->keyboard-navigation#focus click->command-palette#showLoadingMessage", turbo_method: command.http_method} do %>
     <% if command.icon? %>
-      <div class="flex-none text-gray-400 group-data-[active=true]:text-white">
+      <!-- For some reason the line below works, but the uncommented line does not color the icon... I have no idea why... -->
+      <!-- <div class="kommandant-flex-none kommandant-text-gray-400 group-data-[active=true]:text-white"> -->
+      <div class="kommandant-flex-none kommandant-text-gray-400 group-data-[active=true]:kommandant-text-white">
         <%= render "kommandant/shared/icons/command", icon: command.icon %>
       </div>
     <% end %>
   
-    <span class="ml-3 flex-auto truncate"><%= command.name %></span>
-    <span class="ml-3 hidden group-data[active=true]:inline flex-none text-indigo-100"><%= t("kommandant.navigation.jump_to") %></span>
+    <span class="kommandant-ml-3 kommandant-flex-auto kommandant-truncate"><%= command.name %></span>
+    <span class="kommandant-ml-3 kommandant-hidden group-data[active=true]:kommandant-inline kommandant-flex-none kommandant-text-indigo-100"><%= t("kommandant.navigation.jump_to") %></span>
   <% end %>
 </li>
