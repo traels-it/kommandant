@@ -13,3 +13,25 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.file_fixture_path = ActiveSupport::TestCase.fixture_path + "/files"
   ActiveSupport::TestCase.fixtures :all
 end
+
+Kommandant.config.commands_path = "test/fixtures/files/commands.json"
+
+MeiliSearch::Rails.configuration = {
+  meilisearch_url: ENV.fetch("MEILI_HTTP_ADDR") { "http://localhost:7700" },
+  meilisearch_api_key: ENV.fetch("MEILI_MASTER_KEY") { "MASTER_KEY" },
+  per_environment: true
+}
+
+class ActiveSupport::TestCase
+  setup do
+    @@once ||= begin
+      Kommandant::Command.reindex!
+      MeiliSearch::Rails::Utilities.reindex_all_models
+      true
+    end
+  end
+
+  def sign_in(user)
+    post sessions_path, params: {user_id: user.id}
+  end
+end

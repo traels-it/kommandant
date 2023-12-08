@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+unpublished:
+  name: All about stuff
+  published: false
+
+published:
+  name: Not about stuff at all
+  published: true

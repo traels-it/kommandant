@@ -1,0 +1,12 @@
+<li>
+  <%= link_to command.path, class: "group cursor-default select-none flex items-center px-3 py-2 rounded-md data-[active=true]:bg-slate-600 data-[active=true]:text-white group-data-[active=true]:outline-none", data: {active: false, keyboard_navigation_target: "focusable", action: "mouseenter->keyboard-navigation#focus click->command-palette#showLoadingMessage", turbo_method: command.http_method} do %>
+    <% if command.icon? %>
+      <div class="flex-none text-gray-400 group-data-[active=true]:text-white">
+        <%= render "kommandant/shared/icons/command", icon: command.icon %>
+      </div>
+    <% end %>
+  
+    <span class="ml-3 flex-auto truncate"><%= command.name %></span>
+    <span class="ml-3 hidden group-data[active=true]:inline flex-none text-indigo-100"><%= t("kommandant.navigation.jump_to") %></span>
+  <% end %>
+</li>

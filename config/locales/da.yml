@@ -1,0 +1,19 @@
+da:
+  kommandant:
+    shared:
+      command_palette:
+        input_placeholder: Søg
+        default_state:
+          recent_commands: Sidst brugte
+        empty_state:
+          text: Vi kunne ikke finde nogen resultater for
+        loading_message:
+          text: Henter...
+      icons:
+        command:
+          icon_missing: Command icon mangler med navn '%{icon_name}'
+    navigation:
+      jump_to: Gå til
+    pagination:
+      prev: Forrige
+      next: Næste

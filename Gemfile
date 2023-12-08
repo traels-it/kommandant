@@ -9,6 +9,15 @@ gem "puma"
 gem "sqlite3"
 
 gem "sprockets-rails"
+gem "turbo-rails", "~> 1.4"
+group :development do
+  gem "standard", "~> 1.32"
+end
+group :test do
+  gem "kredis", "~> 1.5"
+  gem "pagy", "~> 6.0"
+  gem "minitest-spec-rails", "~> 7.2"
+end
 
 # Start debugger with binding.b [https://github.com/ruby/debug]
 # gem "debug", ">= 1.0.0"
