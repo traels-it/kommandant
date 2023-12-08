@@ -1,9 +1,5 @@
 require "test_helper"
 
-# Needs a more generic name, maybe? Default? Navigation? Kommmandant::CommandPaletteController? Is this premature?
-# Should I built a more thorough dummy app, when I extract this? Right now meilisearch is running in a docker container for the main app
-# Should ViewComponent be a requirement? Or should I try to reimplement the views with partials?
-# Also I should probably redesign the palette or ask for permission to use the design from TailwindUI...
 class SearchesControllerTest < ActionDispatch::IntegrationTest
   describe "#search" do
     before do
