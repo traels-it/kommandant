@@ -1,32 +1,32 @@
-<div class="relative z-50" role="dialog" aria-modal="true" data-action="click->command-palette#hideWithBackgroundOverlay keydown.ctrl+l->command-palette#nextPage keydown.ctrl+j->command-palette#previousPage keydown.meta+l->command-palette#nextPage keydown.meta+j->command-palette#previousPage">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity"  
+<div class="kommandant-relative kommandant-z-50" role="dialog" aria-modal="true" data-action="click->command-palette#hideWithBackgroundOverlay keydown.ctrl+l->command-palette#nextPage keydown.ctrl+j->command-palette#previousPage keydown.meta+l->command-palette#nextPage keydown.meta+j->command-palette#previousPage">
+  <div class="hidden kommandant-fixed kommandant-inset-0 kommandant-bg-gray-500 kommandant-bg-opacity-25 kommandant-transition-opacity"  
     data-command-palette-target="background"
-    data-transition-enter="ease-out duration-300"
-    data-transition-enter-start="opacity-0"
-    data-transition-enter-end="opacity-100"
-    data-transition-leave="ease-in duration-200"
-    data-transition-leave-start="opacity-100"
-    data-transition-leave-end="opacity-0">
+    data-transition-enter="kommandant-ease-out kommandant-duration-300"
+    data-transition-enter-start="kommandant-opacity-0"
+    data-transition-enter-end="kommandant-opacity-100"
+    data-transition-leave="kommandant-ease-in kommandant-duration-200"
+    data-transition-leave-start="kommandant-opacity-100"
+    data-transition-leave-end="kommandant-opacity-0">
   </div>
 
-  <div class="hidden fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20"
+  <div class="hidden kommandant-fixed kommandant-inset-0 kommandant-z-10 kommandant-overflow-y-auto kommandant-p-4 sm:kommandant-p-6 md:kommandant-p-20"
     data-command-palette-target="panel"
-    data-transition-enter="ease-out duration-300"
-    data-transition-enter-start="opacity-0 scale-95"
-    data-transition-enter-end="opacity-100 scale-100"
-    data-transition-leave="ease-in duration-200"
-    data-transition-leave-start="opacity-100 scale-100"
-    data-transition-leave-end="opacity-0 scale-95">
+    data-transition-enter="kommandant-ease-out kommandant-duration-300"
+    data-transition-enter-start="kommandant-opacity-0 kommandant-scale-95"
+    data-transition-enter-end="kommandant-opacity-100 kommandant-scale-100"
+    data-transition-leave="kommandant-ease-in kommandant-duration-200"
+    data-transition-leave-start="kommandant-opacity-100 kommandant-scale-100"
+    data-transition-leave-end="kommandant-opacity-0 kommandant-scale-95">
     
-    <div class="mx-auto max-w-2xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
+    <div class="kommandant-mx-auto kommandant-max-w-2xl kommandant-transform kommandant-divide-y kommandant-divide-gray-100 kommandant-overflow-hidden kommandant-rounded-xl kommandant-bg-white kommandant-shadow-2xl kommandant-ring-1 kommandant-ring-black kommandant-ring-opacity-5 kommandant-transition-all">
       <%= turbo_frame_tag :command_palette do %>
         <div data-command-palette-target="content">
-          <div class="relative">
-            <div class="pointer-events-none absolute top-3 left-4 text-gray-400">
+          <div class="kommandant-relative">
+            <div class="kommandant-pointer-events-none kommandant-absolute kommandant-top-3 kommandant-left-4 kommandant-text-gray-400">
               <%= render "kommandant/shared/icons/search" %>
             </div>
             <%= form_with url: Kommandant::Engine.routes.url_helpers.searches_path, method: :get do |form| %>
-              <%= form.text_field :query, value: local_assigns[:query], class: "h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm", placeholder: t(".input_placeholder"), autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>
+              <%= form.text_field :query, value: local_assigns[:query], class: "kommandant-h-12 kommandant-w-full kommandant-border-0 kommandant-bg-transparent kommandant-pl-11 kommandant-pr-4 kommandant-text-gray-800 kommandant-placeholder-gray-400 focus:kommandant-ring-0 sm:kommandant-text-sm", placeholder: t(".input_placeholder"), autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>
             <% end %>
           </div>
           <% if local_assigns[:results] %>
@@ -34,7 +34,7 @@
               <%= render "kommandant/shared/command_palette/empty_state", query: query %>
             <% elsif local_assigns[:results].any? %>
               <!-- Results, show/hide based on command palette state. -->
-              <ul class="max-h-96 overflow-y-auto p-2 text-sm text-gray-700">
+              <ul class="kommandant-max-h-96 kommandant-overflow-y-auto kommandant-p-2 kommandant-text-sm kommandant-text-gray-700">
                 <% local_assigns[:results].each do |result| %>
                   <%= render "kommandant/shared/command_palette/command", command: result %>
                 <% end %>

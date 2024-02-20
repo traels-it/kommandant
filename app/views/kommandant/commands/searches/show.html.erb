@@ -1,21 +1,21 @@
 <%= turbo_frame_tag :command_palette do %>
   <div data-command-palette-target="content">
-    <div class="flex px-4">
-      <div class="flex items-center space-x-1 text-gray-400">
-        <%= link_to(Kommandant::Engine.routes.url_helpers.searches_path, class: "inline-flex items-center space-x-2 border shadow-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:cursor-pointer focus:ring-gray-500 text-xs px-2.5 py-1.5") do %>
+    <div class="kommandant-flex kommandant-px-4">
+      <div class="kommandant-flex kommandant-items-center kommandant-space-x-1 kommandant-text-gray-400">
+        <%= link_to(Kommandant::Engine.routes.url_helpers.searches_path, class: "kommandant-inline-flex kommandant-items-center kommandant-space-x-2 kommandant-border kommandant-shadow-sm kommandant-font-medium kommandant-rounded-md focus:kommandant-outline-none focus:kommandant-ring-2 focus:kommandant-ring-offset-2 disabled:kommandant-opacity-50 disabled:kommandant-cursor-not-allowed kommandant-border-gray-300 kommandant-text-gray-700 kommandant-bg-white hover:kommandant-bg-gray-50 hover:kommandant-cursor-pointer focus:kommandant-ring-gray-500 kommandant-text-xs kommandant-px-2.5 kommandant-py-1.5") do %>
           <span><%= @command.name %></span>
         <% end %>
 
         <%= render "kommandant/shared/icons/chevron_right" %>
       </div>
 
-      <%= form_with url: Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id), method: :get, class: "flex-grow" do |form| %>
-        <%= form.text_field :query, class: "h-12 w-full border-0 bg-transparent pl-1 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm", value: params[:query], placeholder: @command.placeholder, autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>
+      <%= form_with url: Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id), method: :get, class: "kommandant-flex-grow" do |form| %>
+        <%= form.text_field :query, class: "kommandant-h-12 kommandant-w-full kommandant-border-0 kommandant-bg-transparent kommandant-pl-1 kommandant-pr-4 kommandant-text-gray-800 kommandant-placeholder-gray-400 focus:kommandant-ring-0 sm:kommandant-text-sm", value: params[:query], placeholder: @command.placeholder, autocomplete: "off", data: {command_palette_target: "input", action: "keyup->command-palette#submit"} %>
       <% end %>
     </div>
 
     <% if @results.any? %>
-      <ul class="overflow-y-auto p-2 text-sm text-gray-700">
+      <ul class="kommandant-overflow-y-auto kommandant-p-2 kommandant-text-sm kommandant-text-gray-700">
         <% @results.each do |result| %>
           <%# TODO: How about a default? %>
           <% if partial_exists_for_result?(result) %>
@@ -27,12 +27,12 @@
       </ul>
 
       <% if Kommandant.config.pagination.enabled %>
-        <div class="px-4 py-2 flex justify-between items-baseline">
+        <div class="kommandant-px-4 kommandant-py-2 kommandant-flex kommandant-justify-between kommandant-items-baseline">
           <span class="text-sm"><%= @pagination_info_label %></span>
 
-          <div class="space-x-4">
-            <%= link_to(t("kommandant.pagination.prev"), Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id, page: @pagination.prev, query: @query), class: "font-medium text-sm text-gray-600 hover:text-gray-800", data: {command_palette_target: "previousPageLink"}) if @pagination.prev %>
-            <%= link_to(t("kommandant.pagination.next"), Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id, page: @pagination.next, query: @query), class: "font-medium text-sm text-gray-600 hover:text-gray-800", data: {command_palette_target: "nextPageLink"}) if @pagination.next %>
+          <div class="kommandant-space-x-4">
+            <%= link_to(t("kommandant.pagination.prev"), Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id, page: @pagination.prev, query: @query), class: "kommandant-font-medium kommandant-text-sm kommandant-text-gray-600 hover:kommandant-text-gray-800", data: {command_palette_target: "previousPageLink"}) if @pagination.prev %>
+            <%= link_to(t("kommandant.pagination.next"), Kommandant::Engine.routes.url_helpers.command_searches_path(@command.id, page: @pagination.next, query: @query), class: "kommandant-font-medium kommandant-text-sm kommandant-text-gray-600 hover:kommandant-text-gray-800", data: {command_palette_target: "nextPageLink"}) if @pagination.next %>
           </div>
         </div>
       <% end %>
@@ -44,24 +44,24 @@
   <%= render "kommandant/shared/command_palette/loading_message" %>
 
   <% if Kommandant.config.pagination.enabled && @pagination.pages > 1 %>
-    <div class="flex justify-end items-center divide-x bg-gray-50 py-2.5 px-4 text-xs text-gray-700">
-      <div class="pr-2 flex flex-wrap justify-end items-center space-x-2">
+    <div class="kommandant-flex kommandant-justify-end kommandant-items-center kommandant-divide-x kommandant-bg-gray-50 kommandant-py-2.5 kommandant-px-4 kommandant-text-xs kommandant-text-gray-700">
+      <div class="kommandant-pr-2 kommandant-flex kommandant-flex-wrap kommandant-justify-end kommandant-items-center kommandant-space-x-2">
         <span><%= t("kommandant.pagination.prev").html_safe %>:</span>
         
-        <div class="flex items-center space-x-1">
-          <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">Ctrl</kbd>
+        <div class="kommandant-flex kommandant-items-center kommandant-space-x-1">
+          <kbd class="kommandant-px-1 kommandant-py-0.5 kommandant-rounded kommandant-border kommandant-border-gray-400 kommandant-bg-white kommandant-font-semibold kommandant-text-gray-900">Ctrl</kbd>
           <span>+</span>
-          <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">J</kbd>
+          <kbd class="kommandant-px-1 kommandant-py-0.5 kommandant-rounded kommandant-border kommandant-border-gray-400 kommandant-bg-white kommandant-font-semibold kommandant-text-gray-900">J</kbd>
         </div>
       </div>
 
-      <div class="pl-2 flex flex-wrap justify-end items-center space-x-2">
+      <div class="kommandant-pl-2 kommandant-flex kommandant-flex-wrap kommandant-justify-end kommandant-items-center kommandant-space-x-2">
         <span><%= t("kommandant.pagination.next").html_safe %>:</span>
         
-        <div class="flex items-center space-x-1">
-          <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">Ctrl</kbd>
+        <div class="kommandant-flex kommandant-items-center kommandant-space-x-1">
+          <kbd class="kommandant-px-1 kommandant-py-0.5 kommandant-rounded kommandant-border kommandant-border-gray-400 kommandant-bg-white kommandant-font-semibold kommandant-text-gray-900">Ctrl</kbd>
           <span>+</span>
-          <kbd class="px-1 py-0.5 rounded border border-gray-400 bg-white font-semibold text-gray-900">L</kbd>
+          <kbd class="kommandant-px-1 kommandant-py-0.5 kommandant-rounded kommandant-border kommandant-border-gray-400 kommandant-bg-white kommandant-font-semibold kommandant-text-gray-900">L</kbd>
         </div>
       </div>
     </div>
