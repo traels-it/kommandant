@@ -1,3 +1,5 @@
+// This was taken from https://github.com/mmccall10/el-transition but is included here to avoid the need for a separate package
+
 export async function enter(element, transitionName = null) {
   element.classList.remove('hidden')
   await transition('enter', element, transitionName)
