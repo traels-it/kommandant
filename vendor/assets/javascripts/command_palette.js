@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 import { enter, leave, toggle } from "./transition"
-import debounce from "debounce"
 
 export default class extends Controller {
   static targets = ["background", "panel", "input", "content", "loadingMessage", "previousPageLink", "nextPageLink"]
@@ -12,7 +11,7 @@ export default class extends Controller {
   }
 
   initialize() {
-    this.submit = debounce(this.submit.bind(this), 500)
+    this.submit = this.debounce(this.submit, 500).bind(this);
   }
 
   toggle(event) {
@@ -107,5 +106,15 @@ export default class extends Controller {
       this.inputTarget.value = ""
       this.inputTarget.value = temp
     }
+  }
+
+  debounce(func, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    };
   }
 }
