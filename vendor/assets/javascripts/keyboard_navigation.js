@@ -37,7 +37,7 @@ export default class extends Controller {
   }
 
   select(event) {
-    if (this.hasFocusableTarget) {
+    if (this.hasFocusableTarget && this.focusableTargetIsVisible) {
       event.preventDefault()
 
       this.activeOption.click()
@@ -64,5 +64,9 @@ export default class extends Controller {
 
   get activeOption() {
     return this.focusableTargets[this.activeOptionIndexValue]
+  }
+
+  get focusableTargetIsVisible() {
+    return this.focusableTarget.offsetParent !== null
   }
 }
