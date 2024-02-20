@@ -26,6 +26,17 @@ module Kommandant
       assert_equal "end_imitation", result.id
     end
 
+    test ".all returns all commands" do
+      expected_result = @parsed_commands_file.map { |hash| Kommandant::Command.new(**hash.symbolize_keys) }
+      
+      result = Kommandant::Command.all
+
+      assert_equal 4, result.size
+      result.each_with_index do |command, index|
+        assert_equal expected_result[index].id, command.id
+      end
+    end
+
     test "it has a translatable name" do
       command = find_command_for(id: "end_imitation")
 

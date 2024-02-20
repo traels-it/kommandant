@@ -19,6 +19,12 @@ module Kommandant
         search(id).find { |command| command.id == id }
       end
 
+      def all
+        JSON.parse(File.read(Kommandant.config.commands_path)).map do |hash|
+          Kommandant::Command.new(**hash.symbolize_keys)
+        end
+      end
+
       def index
         client.index("commands")
       end
