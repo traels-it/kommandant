@@ -8,8 +8,14 @@ module Kommandant::RecentCommands
   def set_recent_commands
     return unless current_user.present?
 
-    @recent_commands ||= current_user.recent_commands.elements.map do |command_id|
-      Kommandant::Command.find(command_id)
+    if current_user.recent_commands.elements.any?
+      @recent_commands ||= current_user.recent_commands.elements.map do |command_id|
+        Kommandant::Command.find(command_id)
+      end
+    else
+      Kommandant::Command.all.each do |command|
+        current_user.recent_commands << command.id
+      end
     end
   end
 end
