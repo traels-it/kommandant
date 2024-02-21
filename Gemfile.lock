@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kommandant (0.2.0)
+    kommandant (0.2.1)
       dry-configurable (~> 1.0, >= 1.0.1)
       meilisearch-rails (~> 0.8.1)
       rails (>= 7.0.5)
