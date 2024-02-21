@@ -217,8 +217,3 @@ Contributions are welcome. We expect you to treat others well.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-
-## TODO:
-
-- [ ] Record videos of searches working and include them in the readme
