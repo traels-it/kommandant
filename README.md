@@ -195,6 +195,19 @@ There are a couple additional fields a command can have.
 
 `admin_only` is used to filter out commands that only the admin is allowed to use. The `admin_only_filter_lambda` in the configuration is used here.
 
+#### Setting up the views
+Kommandant supplies two Stimulus controllers, `command-palette` and `keyboard-navigation`, containing all the JavaScript necessary to show, hide and navigate the command palette. This requires a `data-controller` attribute that catches all the events nested under its element. We recommend setting this on the body tag of your layout, so that all events are caught.
+
+Stimulus data-action attributes are used to trigger the command palette. There are no default keybindings for this. Instead we utilize the [keyboard event filters](https://stimulus.hotwired.dev/reference/actions#keyboardevent-filter) in Stimulus to trigger the toggle action. You can use this to set any keyboard shortcut you want - as well as trigger it by clicking a button or any other event, you want to display the palette.
+
+```
+<body
+  data-controller="command-palette keyboard-navigation"
+  data-action="keydown.meta+k->command-palette#toggle keydown.ctrl+k->command-palette#toggle keydown.esc->command-palette#hide keydown.down->keyboard-navigation#down keydown.up->keyboard-navigation#up keydown.enter->keyboard-navigation#select">
+  ...
+</body>
+```
+
 ## Future improvements
 We will continue to improve this gem. Some of the things on the planning board are:
 - Install task that generates both a default config and commands file
