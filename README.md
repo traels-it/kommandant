@@ -208,13 +208,25 @@ Stimulus data-action attributes are used to trigger the command palette. There a
 </body>
 ```
 
+## Tasks
+The gem comes with several tasks for reindexing and clearing the search engine. You will probably use `rails kommandant:reindex` the most. We recommend you run this on every deploy to make sure the search engine contains the data you expect.
+
+```
+rails kommandant:clear_command_index                 # Clears the Kommandant commands from the search engine
+rails kommandant:clear_indexes                       # Clears the search engine of all commands and models
+rails kommandant:clear_model_index                   # Clears the search engine of all models set up with Kommandant
+rails kommandant:install:migrations                  # Copy migrations from kommandant to application
+rails kommandant:reindex                             # Reindexes all commands and models
+rails kommandant:reindex_commands                    # Reindexes all commmands defined in the commands json file (or w...
+rails kommandant:reindex_models                      # Reindexes all models set up with Kommandant
+```
+
 ## Future improvements
 We will continue to improve this gem. Some of the things on the planning board are:
 - Install task that generates both a default config and commands file
 - Database-backed commands
 - Support for navigation commands
 - Default paths for resource commands
-- Index commands task
 - Build own macros for indexing models in meilisearch
 - Optional command icons
 - A default icon set and partial (probably [heroicons](https://heroicons.com/))
