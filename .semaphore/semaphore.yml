@@ -11,7 +11,9 @@ blocks:
         - name: 'Job #1'
           commands:
             - checkout
+            - cd test/dummy
             - docker-compose up -d db redis search
+            - cd ../../
             - bundle install --deployment --path vendor/bundle
             - 'bundle exec rails app:db:drop app:db:create app:db:migrate'
             - bundle exec rails test
