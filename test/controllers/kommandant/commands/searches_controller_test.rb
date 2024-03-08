@@ -25,6 +25,16 @@ class Kommandant::Commands::SearchesControllerTest < ActionDispatch::Integration
       end
     end
 
+    it "does not highlight the search term in the results, if the setting is turned off" do
+      Kommandant.config.highlight_search_term = false
+      resource = users(:not_admin)
+
+      get kommandant.command_searches_path(:find_user), params: {query: resource.name[0..-4]}
+
+      assert_select "ul li a span", text: "Show #{resource.name}"
+      Kommandant.config.highlight_search_term = true
+    end
+
     it "renders a default partial, if no partial is found" do
       old_filter = Kommandant.config.search_result_filter_lambda
       Kommandant.config.search_result_filter_lambda = nil

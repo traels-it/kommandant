@@ -11,6 +11,7 @@ module Kommandant
   setting :admin_only_filter_lambda
   setting :parent_controller, default: "::ApplicationController"
   setting :current_user_method, default: "current_user"
+  setting :highlight_search_term, default: true
   setting :recent_commands do
     setting :enabled, default: true
   end
