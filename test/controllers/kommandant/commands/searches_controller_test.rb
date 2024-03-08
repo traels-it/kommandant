@@ -12,7 +12,7 @@ class Kommandant::Commands::SearchesControllerTest < ActionDispatch::Integration
 
       get kommandant.command_searches_path(:find_user), params: {query: resource.id}
 
-      assert_select "ul li a[href='#{expected_path}']", text: resource.name
+      assert_select "ul li a[href='#{expected_path}'] span", text: "Show #{resource.name}"
     end
 
     it "renders a default partial, if no partial is found" do
@@ -38,7 +38,7 @@ class Kommandant::Commands::SearchesControllerTest < ActionDispatch::Integration
 
         get kommandant.command_searches_path(:find_user), params: {query: resource.id}
 
-        assert_select "ul li a[href='#{expected_path}']", resource.name
+        assert_select "ul li a[href='#{expected_path}'] span", "Show #{resource.name}"
       end
 
       it "does not find results, user is not allowed to see" do
