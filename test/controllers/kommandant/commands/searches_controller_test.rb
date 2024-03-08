@@ -15,6 +15,16 @@ class Kommandant::Commands::SearchesControllerTest < ActionDispatch::Integration
       assert_select "ul li a[href='#{expected_path}'] span", text: "Show #{resource.name}"
     end
 
+    it "highlights the search term in the results" do
+      resource = users(:not_admin)
+
+      get kommandant.command_searches_path(:find_user), params: {query: resource.name[0..-4]}
+
+      assert_select "ul li a" do |result|
+        assert_select result, "b.kommandant-bg-amber-200", text: resource.name[0..-4]
+      end
+    end
+
     it "renders a default partial, if no partial is found" do
       old_filter = Kommandant.config.search_result_filter_lambda
       Kommandant.config.search_result_filter_lambda = nil

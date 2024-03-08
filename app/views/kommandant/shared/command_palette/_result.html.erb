@@ -1,6 +1,6 @@
 <li>
   <%= link_to result.path, data: {active: false, keyboard_navigation_target: "focusable", action: "mouseenter->keyboard-navigation#focus click->command-palette#showLoadingMessage", turbo_method: result.http_method, turbo_frame: "_top"}, class: "kommandant-group kommandant-cursor-default kommandant-select-none kommandant-flex kommandant-items-center kommandant-px-3 kommandant-py-2 kommandant-rounded-md data-[active=true]:kommandant-bg-slate-600 data-[active=true]:kommandant-text-white group-data-[active=true]:kommandant-outline-none" do %>
-    <span class="kommandant-ml-3 kommandant-flex-auto kommandant-truncate"><%= result.name %></span>
+    <span class="kommandant-ml-3 kommandant-flex-auto kommandant-truncate"><%= highlight(result.name, query) { |match| tag.b(match, class: "kommandant-bg-amber-200 kommandant-text-gray-900") } %></span>
     <span class="kommandant-ml-3 kommandant-hidden group-data-[active=true]:kommandant-inline kommandant-flex-none kommandant-text-indigo-100"><%= t("kommandant.navigation.jump_to") %></span>
   <% end %>
 </li>

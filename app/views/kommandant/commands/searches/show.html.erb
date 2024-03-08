@@ -19,9 +19,9 @@
         <% @results.each do |result| %>
           <%# TODO: How about a default? %>
           <% if partial_exists_for_result?(result) %>
-            <%= render result.resource, result: result %>
+            <%= render result.resource, result: result, query: params[:query] %>
           <% else %>
-            <%= render "kommandant/shared/command_palette/result", result: result %>
+            <%= render "kommandant/shared/command_palette/result", result: result, query: params[:query] %>
           <% end %>
         <% end %>
       </ul>
