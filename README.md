@@ -26,7 +26,8 @@ gem "kommandant"
 
 And then execute:
 ```bash
-$ bundle
+bundle
+bin/rails generate kommandant:install
 ```
 And you're good to go! However, you might want to configure the gem. As Kommandant has been extracted from one of our apps, we have tailored the default configuration to this app. You might want to turn some stuff off.
 
