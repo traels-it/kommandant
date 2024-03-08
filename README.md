@@ -47,6 +47,9 @@ Kommandant.configure do |config|
   
   # We assume there is a logged in user and therefore a current_user method. The name of this method can be set here. It defaults to current_user.
   # config.current_user_method = current_account
+
+  # Kommandant highlights search terms by default. Uncomment this to turn it off. This only turns highlighting off, when using the views provided by the gem. You can still highlight terms if providing your own partial.
+  # config.highligt_search_term = false
   
   # If you use Kredis, Kommandant can display the current user's most recently used commands. It requires your user model to have kredis_unique_list called recent_commands. If you don't use Kredis or do not want this behavior, it can be disabled. It defaults to being enabled.
   # class User < ApplicationRecord
