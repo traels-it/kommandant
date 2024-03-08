@@ -28,7 +28,7 @@ module Kommandant
 
     test ".all returns all commands" do
       expected_result = @parsed_commands_file.map { |hash| Kommandant::Command.new(**hash.symbolize_keys) }
-      
+
       result = Kommandant::Command.all
 
       assert_equal 4, result.size

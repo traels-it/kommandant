@@ -17,9 +17,9 @@ Gem::Specification.new do |spec|
     Dir["{app,config,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 7.0.5"
-  spec.add_dependency "meilisearch-rails", "~> 0.8.1"
-  spec.add_dependency "turbo-rails", "~> 1.4"
   spec.add_dependency "dry-configurable", "~> 1.0", ">= 1.0.1"
+  spec.add_dependency "meilisearch-rails", "~> 0.8.1"
+  spec.add_dependency "rails", ">= 7.0.5"
+  spec.add_dependency "turbo-rails", "~> 1.4"
   spec.add_development_dependency "tailwindcss-rails", "~> 2.0.30"
 end
