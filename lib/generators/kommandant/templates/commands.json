@@ -1,0 +1,16 @@
+[
+  {
+    "id": "logout",
+    "icon": "ban",
+    "path": "/logout",
+    "http_method": "post",
+    "translations": {
+      "en": {
+        "name": "Log out"
+      },
+      "da": {
+        "name": "Log ud"
+      }
+    }
+  }
+]

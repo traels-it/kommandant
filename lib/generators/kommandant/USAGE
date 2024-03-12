@@ -1,0 +1,9 @@
+Description:
+    Adds the Kommandant configuration to your application along with a sample command.
+
+Example:
+    bin/rails generate kommandant:install
+
+    This will create:
+        config/initializers/kommandant.rb
+        config/kommandant/commands.json
