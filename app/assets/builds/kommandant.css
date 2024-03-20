@@ -271,6 +271,11 @@
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
+.kommandant-bg-amber-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 230 138 / var(--tw-bg-opacity));
+}
+
 .kommandant-bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));

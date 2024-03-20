@@ -18,7 +18,7 @@ class SearchesControllerTest < ActionDispatch::IntegrationTest
     it "renders an empty state, when there are no results" do
       get kommandant.searches_path, params: {query: "missing"}
 
-      assert_select "div.py-14", text: "#{I18n.t("kommandant.shared.command_palette.empty_state.text")} missing"
+      assert_select "div.kommandant-py-14", text: "#{I18n.t("kommandant.shared.command_palette.empty_state.text")} missing"
     end
 
     describe "admin only filter" do

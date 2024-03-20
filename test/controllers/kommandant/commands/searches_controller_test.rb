@@ -12,7 +12,27 @@ class Kommandant::Commands::SearchesControllerTest < ActionDispatch::Integration
 
       get kommandant.command_searches_path(:find_user), params: {query: resource.id}
 
-      assert_select "ul li a[href='#{expected_path}']", text: resource.name
+      assert_select "ul li a[href='#{expected_path}'] span", text: "Show #{resource.name}"
+    end
+
+    it "highlights the search term in the results" do
+      resource = users(:not_admin)
+
+      get kommandant.command_searches_path(:find_user), params: {query: resource.name[0..-4]}
+
+      assert_select "ul li a" do |result|
+        assert_select result, "b.kommandant-bg-amber-200", text: resource.name[0..-4]
+      end
+    end
+
+    it "does not highlight the search term in the results, if the setting is turned off" do
+      Kommandant.config.highlight_search_term = false
+      resource = users(:not_admin)
+
+      get kommandant.command_searches_path(:find_user), params: {query: resource.name[0..-4]}
+
+      assert_select "ul li a span", text: "Show #{resource.name}"
+      Kommandant.config.highlight_search_term = true
     end
 
     it "renders a default partial, if no partial is found" do
@@ -38,7 +58,7 @@ class Kommandant::Commands::SearchesControllerTest < ActionDispatch::Integration
 
         get kommandant.command_searches_path(:find_user), params: {query: resource.id}
 
-        assert_select "ul li a[href='#{expected_path}']", resource.name
+        assert_select "ul li a[href='#{expected_path}'] span", "Show #{resource.name}"
       end
 
       it "does not find results, user is not allowed to see" do

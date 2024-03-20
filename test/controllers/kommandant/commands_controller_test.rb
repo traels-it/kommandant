@@ -11,7 +11,7 @@ class CommandsControllerTest < ActionDispatch::IntegrationTest
       # that might make state handling simpler
       get kommandant.command_path(:find_user)
 
-      assert_select "a.inline-flex", text: "Find user", href: kommandant.searches_path
+      assert_select "a.kommandant-inline-flex", text: "Find user", href: kommandant.searches_path
     end
 
     it "shows a new search form" do
