@@ -14,6 +14,13 @@ module Kommandant
       assert_equal expected_result, MeiliSearch::Rails.client.index("commands").documents["results"]
     end
 
+    test ".remove_from_index! removes all commands from the search engine" do
+      Kommandant::Command.reindex!
+      Kommandant::Command.remove_from_index!
+
+      assert_empty MeiliSearch::Rails.client.index("commands").documents["results"]
+    end
+
     test ".search searches the commands in meilisearch by their translated name" do
       results = Kommandant::Command.search("End")
 

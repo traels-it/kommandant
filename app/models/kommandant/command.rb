@@ -7,6 +7,10 @@ module Kommandant
         )
       end
 
+      def remove_from_index!
+        index.delete_all_documents!
+      end
+
       def search(query)
         result = index.search(query)["hits"]
 
